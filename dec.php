@@ -1,6 +1,15 @@
 <?php
 define('FILE_ENCRYPTION_BLOCKS', 10000);
 
+$req_path = 'decrypted';
+  
+if (!file_exists($req_path)) {
+  
+    mkdir($req_path, 0777, true);
+}
+
+
+
 function decryptFile($source, $key, $dest)
 {
     $key = substr(sha1($key, true), 0, 16);
